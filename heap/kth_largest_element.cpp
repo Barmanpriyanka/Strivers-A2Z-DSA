@@ -58,3 +58,30 @@ public:
     }
 };
          
+
+
+class Solution {
+    public:
+      vector<int> kLargest(vector<int>& arr, int k) {
+          // Your code here
+          priority_queue<int,vector<int>,greater<int>>minheap;
+          for(int num:arr)
+          {
+              minheap.push(num);
+              if(minheap.size()>k)
+              {
+                  minheap.pop();
+              }
+          }
+          
+          vector<int>ans;
+          while(!minheap.empty()){
+              ans.push_back(minheap.top());
+              minheap.pop();
+          }
+          
+          sort(ans.rbegin(),ans.rend());
+          return ans;
+          
+      }
+  };
