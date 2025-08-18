@@ -13,16 +13,16 @@ public:
     
     if (visited[i][j] || board[i][j] != word[k]) return false;
 
-    
-    visited[i][j] = true;
+    //step1
+       visited[i][j] = true;
 
-    
+    //step2
     bool found = dfs(board, visited, word, i+1, j, k+1) ||  // down
                  dfs(board, visited, word, i-1, j, k+1) ||  // up
                  dfs(board, visited, word, i, j+1, k+1) ||  // right
                  dfs(board, visited, word, i, j-1, k+1);    // left
 
-    
+    //step3  backtrack
     visited[i][j] = false;
 
     return found;
